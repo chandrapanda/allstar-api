@@ -1,6 +1,6 @@
 const express = require("express");
 const mongodb = require("mongodb").MongoClient;
-const data = require("./models/data");
+const data = require("./utils/data");
 
 const app = express();
 const port = 3001;
