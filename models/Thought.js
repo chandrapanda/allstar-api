@@ -1,3 +1,4 @@
+const { formatDate } = require("../utils/dateFormat");
 const { Schema, model } = require("mongoose");
 
 // Schema for Reaction model (subdocument of Thought model)
@@ -15,8 +16,8 @@ const reactionSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: formatDate,
     },
-    //TODO: use a getter method to format the timestamp on query
   },
   {
     toJSON: {
@@ -38,8 +39,8 @@ const thoughtSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: formatDate,
     },
-    //TODO: use a getter method to format the timestamp on query
     username: {
       type: String,
       required: true,
