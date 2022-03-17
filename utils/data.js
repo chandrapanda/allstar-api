@@ -1,5 +1,5 @@
 // Data for document
-const data = [
+const userData = [
   // Using a reference to establish a relationship between two documents
   // This is similar to primary/foreign keys in MySQL
   {
@@ -15,80 +15,10 @@ const data = [
     friends: "1, 2",
   },
 ];
-const names = [
+const thoughtData = [
   "Aaran",
   "Aaren",
-  "Aarez",
-  "Aarman",
-  "Aaron",
-  "Aaron-James",
-  "Aarron",
-  "Aaryan",
-  "Aaryn",
-  "Aayan",
-  "Aazaan",
-  "Abaan",
-  "Abbas",
-  "Abdallah",
-  "Abdalroof",
-  "Abdihakim",
-  "Abdirahman",
-  "Abdisalam",
-  "Abdul",
-  "Abdul-Aziz",
-  "Abdulbasir",
-  "Abdulkadir",
-  "Abdulkarem",
-  "Smith",
-  "Jones",
-  "Coollastname",
-  "enter_name_here",
-  "Ze",
-  "Zechariah",
-  "Zeek",
-  "Zeeshan",
-  "Zeid",
-  "Zein",
-  "Zen",
-  "Zendel",
-  "Zenith",
-  "Zennon",
-  "Zeph",
-  "Zerah",
-  "Zhen",
-  "Zhi",
-  "Zhong",
-  "Zhuo",
-  "Zi",
-  "Zidane",
-  "Zijie",
-  "Zinedine",
-  "Zion",
-  "Zishan",
-  "Ziya",
-  "Ziyaan",
-  "Zohaib",
-  "Zohair",
-  "Zoubaeir",
-  "Zubair",
-  "Zubayr",
-  "Zuriel",
-  "Xander",
-  "Jared",
-  "Courtney",
-  "Gillian",
-  "Clark",
-  "Jared",
-  "Grace",
-  "Kelsey",
-  "Tamar",
-  "Alex",
-  "Mark",
-  "Tamar",
-  "Farish",
-  "Sarah",
-  "Nathaniel",
-  "Parker",
+  "Aarez"
 ];
 
 const comments = [
@@ -171,8 +101,7 @@ const getRandomComments = (int) => {
 
 // Export the functions for use in seed.js
 module.exports = {
-  getRandomName,
-  getRandomComments,
-  getRandomPost,
-  genRandomIndex,
+  seedUsers,
+  seedPosts,
+  seedThoughts,
 };
