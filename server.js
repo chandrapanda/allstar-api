@@ -5,7 +5,7 @@ const data = require("./utils/data");
 const app = express();
 const port = 3001;
 
-const connectionStringURI = `mongodb://localhost:27017/groceryListDB`;
+const connectionStringURI = `mongodb://localhost:27017/allStarDB`;
 
 let db;
 
@@ -15,11 +15,13 @@ mongodb.connect(
   (err, client) => {
     db = client.db();
     // Drops any documents, if they exist
-    db.collection("groceryList").deleteMany({});
+    db.collection("allStar").deleteMany({});
     // Adds data to database
-    db.collection("groceryList").insertMany(data, (err, res) => {
+    db.collection("allStar").insertMany(data, (err, res) => {
       if (err) {
         return console.log(err);
+      } else {
+        console.err(err);
       }
       console.log(res.ops);
     });
@@ -31,15 +33,3 @@ mongodb.connect(
 );
 
 app.use(express.json());
-
-// This will return any documents with embedded documents that match
-app.get("/sale-over-30", (req, res) => {
-  db.collection("groceryList")
-    // Use dot notation for embedded document
-    // $gte specifies we want percentage discounts greater than 30
-    .find({ "promotion.percentage_discount": { $gte: 30 } })
-    .toArray((err, results) => {
-      if (err) throw err;
-      res.send(results);
-    });
-});
