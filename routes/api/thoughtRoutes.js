@@ -16,13 +16,23 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const thoughtData = await Thought.find({});
-    res.json(thoughtData);
+    console.log(thoughtData);
+    res.status(200).json(thoughtData);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
 
 //GET a single thought by its _id
+router.get("/:thoughtId", async (req, res) => {
+  try {
+    const thoughtData = await Thought.findById(req.params.thoughtId);
+    res.json(thoughtData);
+  } catch (err) {
+    res.status(500).json();
+  }
+});
 
 //UPDATE a thought by its _id
 

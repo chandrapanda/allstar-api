@@ -16,6 +16,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const userData = await User.find({});
+    console.log(userData);
     res.json(userData);
   } catch (err) {
     res.status(500).json(err);
@@ -35,8 +36,9 @@ router.get("/:userId", async (req, res) => {
 //UPDATE user by its _id
 router.put("/:userId", async (req, res) => {
   try {
-    const updatedUser = await User.update(req.body, {
-      where: { id: req.params.userId },
+    const updatedUser = await User.findOneAndUpdate({
+      ...req.body,
+      where: { _id: req.params.userId },
     });
     if (!updatedUser) {
       res.status(404).json({ message: "No user with this id." });
@@ -52,8 +54,8 @@ router.put("/:userId", async (req, res) => {
 //DELETE user by its _id
 router.delete("/:userId", async (req, res) => {
   try {
-    const userData = await User.destroy({
-      where: { id: req.params.userId },
+    const userData = await User.deleteOne({
+      where: { _id: req.params.userId },
     });
     if (!userData) {
       res.status(404).json({ message: "User with this ID not found." });

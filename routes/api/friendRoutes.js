@@ -17,8 +17,8 @@ router.post("/:userId/friends/:friendId"),
 router.delete("/:userId/friends/:friendId"),
   async (req, res) => {
     try {
-      const friendData = await User.destroy({
-        where: { id: req.params.userId },
+      const friendData = await User.deleteOne({
+        where: { id: req.params.friendId },
       });
       if (!friendData) {
         res.status(404).json({ message: "User with this ID not found." });

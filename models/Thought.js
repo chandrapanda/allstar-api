@@ -1,5 +1,21 @@
 const { Schema, Types, model } = require("mongoose");
-const { formatDate } = require("../utils/dateFormat");
+
+const formatDate = (timestamp) => {
+  const date = new Date(timestamp);
+  let output =
+    date.getDate() +
+    "/" +
+    (date.getMonth() + 1) +
+    "/" +
+    date.getFullYear() +
+    " " +
+    date.getHours() +
+    ":" +
+    date.getMinutes() +
+    ":" +
+    date.getSeconds();
+  return output;
+};
 
 // Schema for Reaction model (subdocument of Thought model)
 const reactionSchema = new Schema(
@@ -16,7 +32,7 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (timeStamp) => formatDate(timeStamp),
+      get: (timestamp) => formatDate(timestamp),
     },
   },
   {
@@ -39,7 +55,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (timeStamp) => formatDate(timeStamp),
+      get: (timestamp) => formatDate(timestamp),
     },
     username: {
       type: String,
@@ -58,7 +74,11 @@ const thoughtSchema = new Schema(
 
 // Creates a virtual property `reactionCount` that gets the length of thought's reactions array
 thoughtSchema.virtual("reactionCount").get(function () {
-  return this.reaction.length;
+  if (this.reaction) {
+    return this.reaction.length;
+  } else {
+    return 0;
+  }
 });
 
 // Initialize our Thought model

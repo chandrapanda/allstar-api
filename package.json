@@ -4,13 +4,12 @@
   "description": "an API for a social network that uses a NoSQL database",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "seed": "node utils/seed.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Chandra Holt",
+  "license": "none",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^6.0.13",
