@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, Types, model } = require("mongoose");
 const { formatDate } = require("../utils/dateFormat");
 
 // Schema for Reaction model (subdocument of Thought model)
