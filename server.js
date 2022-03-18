@@ -1,13 +1,13 @@
 const express = require("express");
+let db = require("./config/connection");
 const mongodb = require("mongodb").MongoClient;
 const data = require("./utils/data");
+const routes = require("./routes");
 
 const app = express();
 const port = 3001;
 
 const connectionStringURI = `mongodb://localhost:27017/allStarDB`;
-
-let db;
 
 mongodb.connect(
   connectionStringURI,
@@ -31,5 +31,13 @@ mongodb.connect(
     });
   }
 );
+
+db.once("open", () => {
+  app.listen(port, () => {
+    console.log(`API server running on port ${port}!`);
+  });
+});
+
+app.use(routes);
 
 app.use(express.json());

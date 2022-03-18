@@ -1,8 +1,8 @@
-const { formatDate } = require("../utils/dateFormat");
 const { Schema, model } = require("mongoose");
+const { formatDate } = require("../utils/dateFormat");
 
 // Schema for Reaction model (subdocument of Thought model)
-const reactionSchema = new mongoose.Schema(
+const reactionSchema = new Schema(
   {
     reactionId: {
       type: Schema.Types.ObjectId,
@@ -16,7 +16,7 @@ const reactionSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: formatDate,
+      get: (timeStamp) => formatDate(timeStamp),
     },
   },
   {
@@ -28,7 +28,7 @@ const reactionSchema = new mongoose.Schema(
 );
 
 // Schema to create Thought model
-const thoughtSchema = new mongoose.Schema(
+const thoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
@@ -39,7 +39,7 @@ const thoughtSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: formatDate,
+      get: (timeStamp) => formatDate(timeStamp),
     },
     username: {
       type: String,
