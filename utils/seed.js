@@ -58,36 +58,3 @@ const seedDB = async () => {
 seedDB().then(() => {
   mongoose.connection.close();
 });
-
-// const connection = require("../config/connection");
-// const { User, Thought } = require("../models");
-// const { userData, thoughtData } = require("./data");
-
-// connection.on("error", (err) => err);
-
-// // Start the seeding runtime timer
-// console.time("seeding");
-
-// // Creates a connection to mongodb
-// connection.once("open", async () => {
-//   // Delete the entries in the collection
-//   await User.deleteMany({});
-//   await Thought.deleteMany({});
-
-//   // Empty arrays for users and thoughts
-//   // const userData;
-//   // const thoughtData;
-
-//   // Wait for the users to be inserted into the database
-
-//   await User.collection.insertMany(userData);
-
-//   //Wait for the thoughts to be inserted into the database
-//   await Thought.collection.insertMany(thoughtData);
-
-//   // Log out a pretty table for users and thoughts
-//   console.table(userData);
-//   console.table(thoughtData);
-//   console.timeEnd("seeding complete 🌱");
-//   process.exit(0);
-// });
