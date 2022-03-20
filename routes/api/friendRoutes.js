@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../../models/User");
 
 // CREATE a new friend in user's friend list
-router.post("/:userId/friends/:friendId"),
+router.post("/:userId/friends/"),
   async (req, res) => {
     try {
       const newFriend = await User.create(req.body);
