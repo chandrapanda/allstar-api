@@ -1,5 +1,7 @@
 # Allstar API
 
+[Video Walkthrough of Application](https://drive.google.com/file/d/1sDxWyVe_fdcmmPG_rHmJ8f7zCDHbKKxO/view)
+
 ## Description
 
 An API for a social network web application where users can share their thoughts, react to friends' thoughts, and create a friend list using Express.js and Mongoose packages. See walkthrough video for demonstration and walkthrough.
