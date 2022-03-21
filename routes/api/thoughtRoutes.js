@@ -37,10 +37,12 @@ router.get("/:thoughtId", async (req, res) => {
 //UPDATE a thought by its _id
 router.put("/:thoughtId", async (req, res) => {
   try {
-    const updatedThought = await Thought.findOneAndUpdate({
-      ...req.body,
-      where: { _id: req.params.thoughtId },
-    });
+    const updatedThought = await Thought.findOneAndUpdate(
+      {
+        _id: req.params.thoughtId,
+      },
+      { ...req.body }
+    );
     if (!updatedThought) {
       res.status(404).json({ message: "No user with this id." });
       return;

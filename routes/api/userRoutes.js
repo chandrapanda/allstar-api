@@ -26,7 +26,9 @@ router.get("/", async (req, res) => {
 //GET a single user by its _id
 router.get("/:userId", async (req, res) => {
   try {
-    const userData = await User.findById(req.params.userId);
+    const userData = await User.findById({
+      _id: req.params.userId,
+    });
     res.json(userData);
   } catch (err) {
     res.status(500).json();
@@ -36,10 +38,12 @@ router.get("/:userId", async (req, res) => {
 //UPDATE user by its _id
 router.put("/:userId", async (req, res) => {
   try {
-    const updatedUser = await User.findOneAndUpdate({
-      ...req.body,
-      where: { _id: req.params.userId },
-    });
+    const updatedUser = await User.findOneAndUpdate(
+      {
+        _id: req.params.userId,
+      },
+      { ...req.body }
+    );
     if (!updatedUser) {
       res.status(404).json({ message: "No user with this id." });
       return;
